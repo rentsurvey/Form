@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentFair - Student Rental Data Collection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>🏠 RentFair</h1>
+    <h2>Building a Transparent Rental Market for Students, By Students</h2>
+
+    <div class="stats-container">
+        <div class="stat-box">
+            <span class="stat-number" id="totalEntries">Loading...</span>
+            <span class="stat-label">Total Contributions</span>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <form id="rentalForm">
+            <h3>📍 Location Details</h3>
+            <div class="form-group">
+                <label for="neighborhood">Neighborhood/Area Name *</label>
+                <input type="text" id="neighborhoodSearch" placeholder="Search for your area...">
+                <div id="searchResults"></div>
+                <select id="neighborhood" name="neighborhood" required>
+                    <option value="">Select Delhi Area</option>
+                    <optgroup label="North Delhi">
+                        <option value="Civil Lines - Vidhan Sabha">Civil Lines - Vidhan Sabha</option>
+                        <option value="GTB Nagar - North Campus">GTB Nagar - North Campus</option>
+                        <option value="Hudson Line - Kingsway Camp">Hudson Line - Kingsway Camp</option>
+                        <option value="Kamla Nagar - Mall Road">Kamla Nagar - Mall Road</option>
+                        <option value="Model Town - Azadpur">Model Town - Azadpur</option>
+                        <option value="Mukherjee Nagar - Coaching Hub">Mukherjee Nagar - Coaching Hub</option>
+                        <option value="Pitampura - Kohat Enclave">Pitampura - Kohat Enclave</option>
+                        <option value="Rohini - Sector 3,7,8,9,10,11,14,15,16,18,19">Rohini - Multiple Sectors</option>
+                        <option value="Shalimar Bagh - Azadpur">Shalimar Bagh - Azadpur</option>
+                        <option value="Wazirabad - Timarpur">Wazirabad - Timarpur</option>
+                        <option value="Ashok Vihar - Phase 1,2,3">Ashok Vihar - Phase 1,2,3</option>
+                        <option value="Burari - Bhalswa">Burari - Bhalswa</option>
+                        <option value="Inderlok - Shastri Nagar">Inderlok - Shastri Nagar</option>
+                        <option value="Kashmere Gate - ISBT">Kashmere Gate - ISBT</option>
+                        <option value="Majlis Park - Adarsh Nagar">Majlis Park - Adarsh Nagar</option>
+                        <option value="Netaji Subhash Place - Shakurpur">Netaji Subhash Place - Shakurpur</option>
+                        <option value="Rithala - Rohini West">Rithala - Rohini West</option>
+                        <option value="Sarai Rohilla - Dev Nagar">Sarai Rohilla - Dev Nagar</option>
+                        <option value="Tri Nagar - Kohat Enclave">Tri Nagar - Kohat Enclave</option>
+                        <option value="University of Delhi - North Campus">University of Delhi - North Campus</option>
+                    </optgroup>
+                    <optgroup label="South Delhi">
+                        <option value="Dhaula Kuan - South Campus">Dhaula Kuan - South Campus</option>
+                        <option value="Satya Niketan - Moti Bagh">Satya Niketan - Moti Bagh</option>
+                        <option value="Lajpat Nagar - Amar Colony">Lajpat Nagar - Amar Colony</option>
+                        <option value="Green Park - Yusuf Sarai">Green Park - Yusuf Sarai</option>
+                        <option value="Hauz Khas - Gulmohar Park">Hauz Khas - Gulmohar Park</option>
+                        <option value="Safdarjung - AIIMS">Safdarjung - AIIMS</option>
+                        <option value="Munirka - JNU">Munirka - JNU</option>
+                        <option value="Malviya Nagar - Saket">Malviya Nagar - Saket</option>
+                        <option value="Kalkaji - Nehru Place">Kalkaji - Nehru Place</option>
+                        <option value="Greater Kailash - CR Park">Greater Kailash - CR Park</option>
+                        <option value="Alaknanda - Kalkaji Extension">Alaknanda - Kalkaji Extension</option>
+                        <option value="AIIMS - Ansari Nagar">AIIMS - Ansari Nagar</option>
+                        <option value="Defence Colony - Lajpat Nagar">Defence Colony - Lajpat Nagar</option>
+                        <option value="Govindpuri - Kalkaji">Govindpuri - Kalkaji</option>
+                        <option value="IIT Delhi - Hauz Khas">IIT Delhi - Hauz Khas</option>
+                        <option value="Jangpura - Nizamuddin">Jangpura - Nizamuddin</option>
+                        <option value="Khan Market - Lodhi Colony">Khan Market - Lodhi Colony</option>
+                        <option value="Lodhi Road - India Gate">Lodhi Road - India Gate</option>
+                        <option value="Mehrauli - Gurgaon Road">Mehrauli - Gurgaon Road</option>
+                        <option value="Okhla - Jamia Nagar">Okhla - Jamia Nagar</option>
+                        <option value="RK Puram - Vasant Kunj">RK Puram - Vasant Kunj</option>
+                        <option value="Saket - Select City Walk">Saket - Select City Walk</option>
+                        <option value="South Extension - Ring Road">South Extension - Ring Road</option>
+                        <option value="Vasant Vihar - Chanakyapuri">Vasant Vihar - Chanakyapuri</option>
+                    </optgroup>
+                    <optgroup label="Central Delhi">
+                        <option value="Connaught Place - Rajiv Chowk">Connaught Place - Rajiv Chowk</option>
+                        <option value="Karol Bagh - Jhandewalan">Karol Bagh - Jhandewalan</option>
+                        <option value="Paharganj - New Delhi Station">Paharganj - New Delhi Station</option>
+                        <option value="Rajinder Nagar - Patel Nagar">Rajinder Nagar - Patel Nagar</option>
+                        <option value="Dev Nagar - Karol Bagh">Dev Nagar - Karol Bagh</option>
+                        <option value="Chandni Chowk - Old Delhi">Chandni Chowk - Old Delhi</option>
+                        <option value="Ajmeri Gate - New Delhi Railway Station">Ajmeri Gate - New Delhi Railway Station
+                        </option>
+                        <option value="Barakhamba Road - Connaught Place">Barakhamba Road - Connaught Place</option>
+                        <option value="Chanakyapuri - Embassy Area">Chanakyapuri - Embassy Area</option>
+                        <option value="Daryaganj - Delhi Gate">Daryaganj - Delhi Gate</option>
+                        <option value="Gole Market - RK Ashram Marg">Gole Market - RK Ashram Marg</option>
+                        <option value="ITO - Pragati Maidan">ITO - Pragati Maidan</option>
+                        <option value="Jhandewalan - Rani Jhansi Road">Jhandewalan - Rani Jhansi Road</option>
+                        <option value="New Delhi Railway Station - Ajmeri Gate">New Delhi Railway Station - Ajmeri Gate
+                        </option>
+                        <option value="Old Delhi Railway Station - Chandni Chowk">Old Delhi Railway Station - Chandni
+                            Chowk</option>
+                        <option value="Parliament Street - India Gate">Parliament Street - India Gate</option>
+                        <option value="Ramakrishna Ashram Marg - Gole Market">Ramakrishna Ashram Marg - Gole Market
+                        </option>
+                    </optgroup>
+                    <optgroup label="East Delhi">
+                        <option value="Laxmi Nagar - Shakarpur">Laxmi Nagar - Shakarpur</option>
+                        <option value="Preet Vihar - Mayur Vihar">Preet Vihar - Mayur Vihar</option>
+                        <option value="Patparganj - IP Extension">Patparganj - IP Extension</option>
+                        <option value="Anand Vihar - Karkardooma">Anand Vihar - Karkardooma</option>
+                        <option value="Dilshad Garden - Seemapuri">Dilshad Garden - Seemapuri</option>
+                        <option value="Krishna Nagar - Geeta Colony">Krishna Nagar - Geeta Colony</option>
+                        <option value="Akshardham - Noida Link Road">Akshardham - Noida Link Road</option>
+                        <option value="Ashram - DND Flyway">Ashram - DND Flyway</option>
+                        <option value="Gandhi Nagar - Yamuna Bank">Gandhi Nagar - Yamuna Bank</option>
+                        <option value="IP College - Patparganj">IP College - Patparganj</option>
+                        <option value="Jhilmil - Dilshad Garden">Jhilmil - Dilshad Garden</option>
+                        <option value="Karkardooma Court - Anand Vihar">Karkardooma Court - Anand Vihar</option>
+                        <option value="Lakshmi Nagar - Vikas Marg">Lakshmi Nagar - Vikas Marg</option>
+                        <option value="Mandawali - IP Extension">Mandawali - IP Extension</option>
+                        <option value="Mayur Vihar Phase 1,2,3">Mayur Vihar Phase 1,2,3</option>
+                        <option value="Nirman Vihar - Preet Vihar">Nirman Vihar - Preet Vihar</option>
+                        <option value="Pandav Nagar - Patparganj">Pandav Nagar - Patparganj</option>
+                        <option value="Shastri Park - Welcome">Shastri Park - Welcome</option>
+                        <option value="Vivek Vihar - Shahdara">Vivek Vihar - Shahdara</option>
+                    </optgroup>
+                    <optgroup label="West Delhi">
+                        <option value="Rajouri Garden - Tagore Garden">Rajouri Garden - Tagore Garden</option>
+                        <option value="Tilak Nagar - Subhash Nagar">Tilak Nagar - Subhash Nagar</option>
+                        <option value="Janakpuri - Uttam Nagar">Janakpuri - Uttam Nagar</option>
+                        <option value="Vikaspuri - Dwarka Mor">Vikaspuri - Dwarka Mor</option>
+                        <option value="Dwarka - Sector 1,2,3,4,5,6,7,8,9,10,11,12">Dwarka - Multiple Sectors</option>
+                        <option value="Najafgarh - Nangloi">Najafgarh - Nangloi</option>
+                        <option value="Bindapur - Uttam Nagar East">Bindapur - Uttam Nagar East</option>
+                        <option value="Dwarka Mor - Kakrola">Dwarka Mor - Kakrola</option>
+                        <option value="Hari Nagar - Tilak Nagar">Hari Nagar - Tilak Nagar</option>
+                        <option value="Janakpuri East/West - District Centre">Janakpuri East/West - District Centre
+                        </option>
+                        <option value="Kirti Nagar - Ramesh Nagar">Kirti Nagar - Ramesh Nagar</option>
+                        <option value="Moti Nagar - Kirti Nagar">Moti Nagar - Kirti Nagar</option>
+                        <option value="Naraina - Moti Nagar">Naraina - Moti Nagar</option>
+                        <option value="Paschim Vihar - Peera Garhi">Paschim Vihar - Peera Garhi</option>
+                        <option value="Punjabi Bagh - Madipur">Punjabi Bagh - Madipur</option>
+                        <option value="Rajouri Garden Market - Metro Station">Rajouri Garden Market - Metro Station
+                        </option>
+                        <option value="Ramesh Nagar - Moti Nagar">Ramesh Nagar - Moti Nagar</option>
+                        <option value="Subhash Nagar - Tagore Garden">Subhash Nagar - Tagore Garden</option>
+                        <option value="Tilak Nagar Market - Metro Station">Tilak Nagar Market - Metro Station</option>
+                        <option value="Uttam Nagar East/West - Janakpuri">Uttam Nagar East/West - Janakpuri</option>
+                    </optgroup>
+                    <optgroup label="Gurgaon">
+                        <option value="Cyber City - DLF Cyber Hub">Cyber City - DLF Cyber Hub</option>
+                        <option value="DLF Phase 1 - Golf Course Road">DLF Phase 1 - Golf Course Road</option>
+                        <option value="DLF Phase 2 - Belaire">DLF Phase 2 - Belaire</option>
+                        <option value="DLF Phase 3 - Nathupur">DLF Phase 3 - Nathupur</option>
+                        <option value="Sector 14 - Old Gurgaon">Sector 14 - Old Gurgaon</option>
+                        <option value="MG Road - Galleria Market">MG Road - Galleria Market</option>
+                        <option value="Sohna Road - Badshahpur">Sohna Road - Badshahpur</option>
+                        <option value="DLF Phase 4 - South City">DLF Phase 4 - South City</option>
+                        <option value="DLF Phase 5 - Golf Course Extension">DLF Phase 5 - Golf Course Extension</option>
+                        <option value="Sector 15 - Huda City Centre">Sector 15 - Huda City Centre</option>
+                        <option value="Sector 29 - Leisure Valley">Sector 29 - Leisure Valley</option>
+                        <option value="Sector 31 - Bharti Airtel">Sector 31 - Bharti Airtel</option>
+                        <option value="Sector 43 - Subhash Chowk">Sector 43 - Subhash Chowk</option>
+                        <option value="Sector 54 - Golf Course Road">Sector 54 - Golf Course Road</option>
+                        <option value="Udyog Vihar - Phase 1,2,3,4,5">Udyog Vihar - Phase 1,2,3,4,5</option>
+                    </optgroup>
+                    <optgroup label="Noida">
+                        <option value="Sector 62 - IT Hub">Sector 62 - IT Hub</option>
+                        <option value="Sector 63 - H Block">Sector 63 - H Block</option>
+                        <option value="Sector 18 - Atta Market">Sector 18 - Atta Market</option>
+                        <option value="Greater Noida - Knowledge Park">Greater Noida - Knowledge Park</option>
+                        <option value="Noida Extension - Gaur City">Noida Extension - Gaur City</option>
+                        <option value="Sector 76 - Logix City Center">Sector 76 - Logix City Center</option>
+                        <option value="Sector 15 - Film City">Sector 15 - Film City</option>
+                        <option value="Sector 16 - Amity University">Sector 16 - Amity University</option>
+                        <option value="Sector 37 - Gautam Buddha Nagar">Sector 37 - Gautam Buddha Nagar</option>
+                        <option value="Sector 50 - C Block">Sector 50 - C Block</option>
+                        <option value="Sector 51 - City Centre Metro">Sector 51 - City Centre Metro</option>
+                        <option value="Sector 52 - Golf Course">Sector 52 - Golf Course</option>
+                        <option value="Sector 61 - Electronic City">Sector 61 - Electronic City</option>
+                        <option value="Sector 125 - Noida Expressway">Sector 125 - Noida Expressway</option>
+                        <option value="Greater Noida West - Gaur City 2">Greater Noida West - Gaur City 2</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div>
+                <input type="checkbox" id="showOtherArea"> Area not listed above
+                <input type="text" id="otherArea" name="otherArea"
+                    placeholder="If not found above, type your area here..." style="display: none;">
+            </div>
+
+            <div class="form-group">
+                <label for="pincode">Pincode *</label>
+                <input type="text" id="pincode" name="pincode" required readonly
+                    placeholder="Auto-filled based on selected area" class="pin-code-display">
+            </div>
+
+            <div class="form-group">
+                <label>Distance to Campus/College/Choching *</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="dist_less1" name="distance_to_campus" value="Less than 1km" required>
+                        <label for="dist_less1">&lt; 1km</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="dist_1_2" name="distance_to_campus" value="1-2km" required>
+                        <label for="dist_1_2">1-2km</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="dist_2_3" name="distance_to_campus" value="2-3km" required>
+                        <label for="dist_2_3">2-3km</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="dist_3_5" name="distance_to_campus" value="3-5km" required>
+                        <label for="dist_3_5">3-5km</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="dist_5_10" name="distance_to_campus" value="5-10km" required>
+                        <label for="dist_5_10">5-10km</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="dist_10_20" name="distance_to_campus" value="10-20km" required>
+                        <label for="dist_10_20">10-20km</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="dist_more20" name="distance_to_campus" value="More than 20km" required>
+                        <label for="dist_more20">> 20km</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Transit Time to Campus *</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="time_less10" name="transit_time" value="Less than 10 min" required>
+                        <label for="time_less10">
+                            &lt; 10min</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="time_10_20" name="transit_time" value="10-20 min" required>
+                        <label for="time_10_20">10-20min</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="time_20_30" name="transit_time" value="20-30 min" required>
+                        <label for="time_20_30">20-30min</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="time_30_45" name="transit_time" value="30-45 min" required>
+                        <label for="time_30_45">30-45min</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="time_45_60" name="transit_time" value="45-60 min" required>
+                        <label for="time_45_60">45-60min</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="time_more60" name="transit_time" value="More than 60 min" required>
+                        <label for="time_more60">> 60min</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Transit by to Campus *</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="transit_foot" name="transit_by" value="On Foot" required>
+                        <label for="transit_foot">🚶 Foot</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="transit_auto" name="transit_by" value="Auto/Rickshaw" required>
+                        <label for="transit_auto">🛺 Auto</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="transit_bus" name="transit_by" value="Bus" required>
+                        <label for="transit_bus">🚌 Bus</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="transit_metro" name="transit_by" value="Metro" required>
+                        <label for="transit_metro">🚇 Metro</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="transit_bike" name="transit_by" value="Bike/Scooter" required>
+                        <label for="transit_bike">🏍️ Bike</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="transit_car" name="transit_by" value="Car/Cab" required>
+                        <label for="transit_car">🚗 Car</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Nearest Metro Distance</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="metro_walk5" name="nearest_metro" value="5min walk">
+                        <label for="metro_walk5">5min walk</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="metro_walk10" name="nearest_metro" value="10min walk">
+                        <label for="metro_walk10">10min walk</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="metro_walk15" name="nearest_metro" value="15min walk">
+                        <label for="metro_walk15">15min walk</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="metro_far" name="nearest_metro" value="More than 15min">
+                        <label for="metro_far">More than 15min</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Nearest Bus Stop Distance</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="bus_walk5" name="nearest_bus" value="5min walk">
+                        <label for="bus_walk5">5min walk</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="bus_walk10" name="nearest_bus" value="10min walk">
+                        <label for="bus_walk10">10min walk</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="bus_walk15" name="nearest_bus" value="15min walk">
+                        <label for="bus_walk15">15min walk</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="bus_far" name="nearest_bus" value="More than 15min">
+                        <label for="bus_far">More than 15min</label>
+                    </div>
+                </div>
+            </div>
+
+            <h3>👤 Your Status</h3>
+
+            <div class="form-group">
+                <label>What best describes you? *</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="status_student" name="user_status" value="Student" required>
+                        <label for="status_student">🎓 Student</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="status_job_aspirant" name="user_status" value="Job Aspirant" required>
+                        <label for="status_job_aspirant">🔍 Job Aspirant</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="status_professional" name="user_status" value="Professional/Worker"
+                            required>
+                        <label for="status_professional">💼 Professional/Worker</label>
+                    </div>
+                </div>
+            </div>
+
+            <h3>🏠 Property Information</h3>
+
+            <div class="form-group">
+                <label>Property Type *</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="prop_pg" name="property_type" value="PG" required>
+                        <label for="prop_pg">🏠 PG</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="prop_shared" name="property_type" value="Shared Room" required>
+                        <label for="prop_shared">👥 Shared</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="prop_single" name="property_type" value="Single Room" required>
+                        <label for="prop_single">🚪 Single</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="prop_1bhk" name="property_type" value="1BHK" required>
+                        <label for="prop_1bhk">🏘️ 1BHK</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="prop_2bhk" name="property_type" value="2BHK" required>
+                        <label for="prop_2bhk">🏡 2BHK</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="prop_hostel" name="property_type" value="Hostel" required>
+                        <label for="prop_hostel">🏢 Hostel</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="prop_studio" name="property_type" value="Studio" required>
+                        <label for="prop_studio">🏠 Studio</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Gender Restrictions *</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="gender_male" name="gender_restriction" value="Male Only" required>
+                        <label for="gender_male">👨 Male Only</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="gender_female" name="gender_restriction" value="Female Only" required>
+                        <label for="gender_female">👩 Female Only</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="gender_coed" name="gender_restriction" value="Co-ed" required>
+                        <label for="gender_coed">👫 Co-ed</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Preferred Tenant Type</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="tenant_students" name="tenant_preference" value="Students Only">
+                        <label for="tenant_students">🎓 Students</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="tenant_working" name="tenant_preference" value="Working Professionals">
+                        <label for="tenant_working">💼 Working</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="tenant_mixed" name="tenant_preference" value="Mixed">
+                        <label for="tenant_mixed">👥 Mixed</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="tenant_family" name="tenant_preference" value="Family">
+                        <label for="tenant_family">👨‍👩‍👧‍👦 Family</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Furnishing Status *</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="furn_full" name="furnishing" value="Fully Furnished" required>
+                        <label for="furn_full">🛏️ Fully</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="furn_semi" name="furnishing" value="Semi Furnished" required>
+                        <label for="furn_semi">🪑 Semi</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="furn_none" name="furnishing" value="Unfurnished" required>
+                        <label for="furn_none">📦 None</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Kitchen Access *</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="kitchen_shared" name="kitchen_access" value="Shared Kitchen Access"
+                            required>
+                        <label for="kitchen_shared">🍳 Shared</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="kitchen_private" name="kitchen_access" value="Private Kitchen" required>
+                        <label for="kitchen_private">🏠 Private</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="kitchen_none" name="kitchen_access" value="No Kitchen Access" required>
+                        <label for="kitchen_none">🚫 None</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Bathroom Type *</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="bath_attached" name="bathroom_type" value="Attached" required>
+                        <label for="bath_attached">🚿 Attached</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="bath_shared23" name="bathroom_type" value="Shared (2-3 people)"
+                            required>
+                        <label for="bath_shared23">👥 Shared (2-3)</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="bath_common" name="bathroom_type" value="Common (4+ people)" required>
+                        <label for="bath_common">🏢 Common (4+)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Floor Number</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="floor_ground" name="floor" value="Ground Floor">
+                        <label for="floor_ground">Ground</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="floor_1" name="floor" value="1st Floor">
+                        <label for="floor_1">1st</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="floor_2" name="floor" value="2nd Floor">
+                        <label for="floor_2">2nd</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="floor_3" name="floor" value="3rd Floor">
+                        <label for="floor_3">3rd</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="floor_4plus" name="floor" value="4th Floor or Higher">
+                        <label for="floor_4plus">4th+</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Building Age (years)</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="age_less5" name="building_age" value="Less than 5 years">
+                        <label for="age_less5">
+                            &lt; 5 years</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="age_5_10" name="building_age" value="5-10 years">
+                        <label for="age_5_10">5-10 years</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="age_10_20" name="building_age" value="10-20 years">
+                        <label for="age_10_20">10-20 years</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="age_more20" name="building_age" value="More than 20 years">
+                        <label for="age_more20">20+ years</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Room Size</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="room_small" name="room_size" value="Small">
+                        <label for="room_small">🏠 Small</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="room_medium" name="room_size" value="Medium">
+                        <label for="room_medium">🏘️ Medium</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="room_large" name="room_size" value="Large">
+                        <label for="room_large">🏡 Large</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Power Backup</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="power_generator" name="power_backup" value="Generator">
+                        <label for="power_generator">⚡ Generator</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="power_inverter" name="power_backup" value="Inverter">
+                        <label for="power_inverter">🔋 Inverter</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="power_none" name="power_backup" value="None">
+                        <label for="power_none">🚫 None</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Water Supply</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="water_24x7" name="water_supply" value="24/7">
+                        <label for="water_24x7">💧 24/7</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="water_fixed" name="water_supply" value="Fixed Hours">
+                        <label for="water_fixed">🕐 Fixed Hours</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="water_tanker" name="water_supply" value="Tanker Supply">
+                        <label for="water_tanker">🚛 Tanker</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Nearby Shops/Amenities</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="amenities_excellent" name="nearby_amenities" value="Excellent">
+                        <label for="amenities_excellent">⭐ Excellent</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="amenities_good" name="nearby_amenities" value="Good">
+                        <label for="amenities_good">👍 Good</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="amenities_average" name="nearby_amenities" value="Average">
+                        <label for="amenities_average">👌 Average</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="amenities_poor" name="nearby_amenities" value="Poor">
+                        <label for="amenities_poor">👎 Poor</label>
+                    </div>
+                </div>
+            </div>
+
+            <h3>🛠️ Available Amenities</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="ac_included" name="amenities" value="ac_included">
+                    <label for="ac_included">❄️ AC</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="wifi_included" name="amenities" value="wifi_included">
+                    <label for="wifi_included">📶 WiFi</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="meals_included" name="amenities" value="meals_included">
+                    <label for="meals_included">🍽️ Meals</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="laundry_included" name="amenities" value="laundry_included">
+                    <label for="laundry_included">👕 Laundry</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="ro_purifier" name="amenities" value="ro_purifier">
+                    <label for="ro_purifier">💧 RO Purifier</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="security_caretaker" name="amenities" value="security_caretaker">
+                    <label for="security_caretaker">🔒 Security</label>
+                </div>
+            </div>
+
+            <h3>👥 Sharing Information</h3>
+            <div class="form-group">
+                <label>Is it a shared room? *</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="shared_yes" name="shared_room" value="Yes" required>
+                        <label for="shared_yes">✅ Yes</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="shared_no" name="shared_room" value="No" required>
+                        <label for="shared_no">❌ No</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Total People in Property</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="people_1" name="roommate_count" value="1">
+                        <label for="people_1">1 (Just me)</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="people_2" name="roommate_count" value="2">
+                        <label for="people_2">2 people</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="people_3" name="roommate_count" value="3">
+                        <label for="people_3">3 people</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="people_4" name="roommate_count" value="4">
+                        <label for="people_4">4 people</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="people_5plus" name="roommate_count" value="5+">
+                        <label for="people_5plus">5+ people</label>
+                    </div>
+                </div>
+            </div>
+
+            <h3>💵 Rental Information</h3>
+            <div class="form-group">
+                <label for="monthly_rent_total">Total Monthly Rent (₹) *</label>
+                <input type="number" id="monthly_rent_total" name="monthly_rent_total" required min="0"
+                    placeholder="e.g., 15000">
+            </div>
+
+            <div class="form-group">
+                <label for="rent_per_person">Your Share of Rent (₹) *</label>
+                <input type="number" id="rent_per_person" name="rent_per_person" required min="0"
+                    placeholder="e.g., 7500">
+            </div>
+
+            <div class="form-group">
+                <label for="deposit_amount">Security Deposit (₹)</label>
+                <input type="number" id="deposit_amount" name="deposit_amount" min="0" placeholder="e.g., 10000">
+            </div>
+
+            <div class="form-group">
+                <label>Bond/Fixed Contract Duration</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="lease_3" name="lease_length" value="3 months">
+                        <label for="lease_3">3 months</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="lease_6" name="lease_length" value="6 months">
+                        <label for="lease_6">6 months</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="lease_11" name="lease_length" value="11 months">
+                        <label for="lease_11">11 months</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="lease_12" name="lease_length" value="12 months">
+                        <label for="lease_12">12 months</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="lease_flexible" name="lease_length" value="Flexible">
+                        <label for="lease_flexible">Flexible</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Rent Payment Terms</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="payment_monthly" name="payment_terms" value="Monthly">
+                        <label for="payment_monthly">📅 Monthly</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="payment_quarterly" name="payment_terms" value="Quarterly">
+                        <label for="payment_quarterly">📊 Quarterly</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="payment_advance" name="payment_terms" value="Advance Required">
+                        <label for="payment_advance">💰 Advance</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Utilities Included in Rent</label>
+                <div class="utility-item">
+                    <input type="checkbox" id="util_electricity" name="utilities" value="electricity">
+                    <label for="util_electricity">💡 Electricity</label>
+                    <input type="number" id="electricity_cost" name="electricity_cost" class="utility-cost"
+                        placeholder="₹ if separate">
+                </div>
+                <div class="utility-item">
+                    <input type="checkbox" id="util_water" name="utilities" value="water">
+                    <label for="util_water">💧 Water</label>
+                    <input type="number" id="water_cost" name="water_cost" class="utility-cost"
+                        placeholder="₹ if separate">
+                </div>
+                <div class="utility-item">
+                    <input type="checkbox" id="util_gas" name="utilities" value="gas">
+                    <label for="util_gas">🔥 Gas/LPG</label>
+                    <input type="number" id="gas_cost" name="gas_cost" class="utility-cost" placeholder="₹ if separate">
+                </div>
+                <div class="utility-item">
+                    <input type="checkbox" id="util_maintenance" name="utilities" value="maintenance">
+                    <label for="util_maintenance">🔧 Maintenance</label>
+                    <input type="number" id="maintenance_cost" name="maintenance_cost" class="utility-cost"
+                        placeholder="₹ if separate">
+                </div>
+            </div>
+
+            <h3>📝 Additional Information</h3>
+            <div class="form-group">
+                <label for="notes">Any additional notes or tips for fellow students?</label>
+                <textarea id="notes" name="notes" rows="4"
+                    placeholder="Share any insights about the property, landlord, or area that might help other students..."></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn">🚀 Submit & Help Fellow Students</button>
+        </form>
+    </div>
+
+    <!-- Final Share Section -->
+    <div class="final-share-section">
+        <h3>📱 Share RentFair & Help More Students!</h3>
+        <p><strong>Every share helps a student find fair rent! 🎓</strong></p>
+        <div class="share-buttons">
+            <button class="share-btn whatsapp" onclick="shareOnWhatsApp()">📱 Share on WhatsApp</button>
+            <button class="share-btn telegram" onclick="shareOnTelegram()">✈️ Share on Telegram</button>
+            <button class="share-btn twitter" onclick="shareOnTwitter()">🐦 Tweet About Us</button>
+            <button class="share-btn copy" onclick="copyLink()">🔗 Copy Link</button>
+        </div>
+        <p class="motivation-text">
+            <em>🌟 "Be the change you want to see! Your one submission can help hundreds of students avoid overpriced
+                rentals. Together, we're building a transparent rental market!" 🌟</em>
+        </p>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message" style="display: none;">
+        <div class="success-content">
+            <h2>🎉 Thank You!</h2>
+            <p>Your contribution has been successfully submitted!</p>
+            <p><strong>You're helping thousands of students find fair rental prices! 🎓</strong></p>
+            <div class="success-stats">
+                <p>📊 Your data will help students in <strong id="successArea"></strong> make better housing decisions.
+                </p>
+                <p>💡 Consider sharing this form with your friends to help more students!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Sections -->
+    <div class="service-sections">
+        <div class="service-box">
+            <h3>📊 Know the Fair Rent</h3>
+            <p>Our platform helps you know in which area rooms are available, what average price and what average
+                facilities are offered.</p>
+            <span class="coming-soon">🔜 Coming Soon: As we train the Model, this will be available</span>
+        </div>
+
+        <div class="service-box">
+            <h3>🗺️ Area for Room/PG/Flats</h3>
+            <p>Easily discover which areas of Delhi offer rooms/PGs/flats at average prices with standard facilities.
+            </p>
+            <span class="coming-soon">🔜 Coming Soon: Area-wise room availability</span>
+        </div>
+
+        <div class="service-box">
+            <h3>🤝 Help Fellow Students</h3>
+            <p>Your contribution helps thousands of students find fair rental prices across India.</p>
+        </div>
+
+        <div class="service-box">
+            <h3>📈 Access Free Data</h3>
+            <p>This data is shared with students for academic and research purposes to promote transparency.</p>
+        </div>
+    </div>
+
+    <div class="privacy-note">
+        <strong>🔒 Your Privacy is Protected:</strong> 100% Anonymous - We don't collect any personal information like
+        names, phone numbers, or emails. All data is used solely for educational purposes to build a fair rental price
+        prediction system.
+    </div>
+
+    <div class="thanks-note">
+        <strong>🙏 Thanks to all the volunteers who have submitted their rental data to help fellow students make better
+            housing decisions!</strong>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
