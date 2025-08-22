@@ -603,7 +603,7 @@ function hideSuccessMessage() {
 
 // Share functionality
 function shareOnWhatsApp() {
-    const text = "🏠 Found an amazing tool for students! RentFair helps find fair rental prices across India. Check it out and contribute your rental data to help fellow students! 🎓";
+    const text = "🏠 Found an amazing tool for students! RentFair helps find fair rental prices across Delhi. Check it out and contribute your rental data to help fellow students! 🎓";
     const url = window.location.href;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text + " " + url)}`;
     window.open(whatsappUrl, '_blank');
@@ -617,7 +617,7 @@ function shareOnTelegram() {
 }
 
 function shareOnTwitter() {
-    const text = "🏠 Helping students find fair rental prices! Check out @RentFair - building transparency in student housing across India 🎓 #StudentHousing #RentFair #TransparentRentals";
+    const text = "🏠 Helping students find fair rental prices! Check out @RentFair - building transparency in student housing across Delhi. 🎓 #StudentHousing #RentFair #TransparentRentals";
     const url = window.location.href;
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
     window.open(twitterUrl, '_blank');
@@ -743,4 +743,5 @@ document.addEventListener('DOMContentLoaded', function() {
     inputs.forEach(input => {
         input.addEventListener('change', updateProgress);
     });
+
 });
